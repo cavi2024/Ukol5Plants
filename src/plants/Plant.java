@@ -24,6 +24,46 @@ public class Plant {
     public Plant(String name) {
         this(name, LocalDate.now(), 7, LocalDate.now(), " ");
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDateOfPlanted() {
+        return dateOfPlanted;
+    }
+
+    public void setDateOfPlanted(LocalDate dateOfPlanted) {
+        this.dateOfPlanted = dateOfPlanted;
+    }
+
+    public int getDayFrenquencyOfWatering() {
+        return dayFrenquencyOfWatering;
+    }
+
+    public void setDayFrenquencyOfWatering(int dayFrenquencyOfWatering) {
+        this.dayFrenquencyOfWatering = dayFrenquencyOfWatering;
+    }
+
+    public LocalDate getDateOfLastWatering() {
+        return dateOfLastWatering;
+    }
+
+    public void setDateOfLastWatering(LocalDate dateOfLastWatering) {
+        this.dateOfLastWatering = dateOfLastWatering;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
 
 
