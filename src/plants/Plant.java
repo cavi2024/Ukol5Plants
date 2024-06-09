@@ -64,6 +64,10 @@ public class Plant {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getWateringInfo() {
+        return String.format("Květina: %s, Poslední zálivka dne: %d, Zalít za: %d dní", name, dateOfLastWatering, dayFrenquencyOfWatering);
+    }
 }
 
 
