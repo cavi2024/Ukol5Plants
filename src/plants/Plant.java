@@ -66,7 +66,16 @@ public class Plant {
     }
 
     public String getWateringInfo() {
-        return String.format("Květina: %s, Poslední zálivka dne: %d, Zalít za: %d dní", name, dateOfLastWatering, dayFrenquencyOfWatering);
+        return String.format("Květina: %s, Poslední zálivka dne: %s, Zalít za: %d dní", name, dateOfLastWatering, dayFrenquencyOfWatering);
+    }
+
+    @Override
+    public String toString() {
+        return "Plant{" +
+                "Název květiny:'" + name + '\'' +
+                ", Poslední zálivka dne:" + dateOfLastWatering +
+                ", Zalít za dní:" + dayFrenquencyOfWatering +
+                '}';
     }
 }
 
