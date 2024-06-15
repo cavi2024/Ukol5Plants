@@ -7,7 +7,7 @@ import java.util.List;
 public class ListPlants {
     private List<Plant> plants;
 
-    // Prázdný seznam rostlin:
+    // Prázdný seznam květin:
     public ListPlants() {
         plants = new ArrayList<>();
     }
@@ -46,6 +46,11 @@ public class ListPlants {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
             plants = (List<Plant>) ois.readObject();
         }
+    }
+
+    // Seznam květin:
+    public List<Plant> getPlants() {
+        return plants;
     }
 }
 
