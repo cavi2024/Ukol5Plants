@@ -48,7 +48,7 @@ public class ListPlants {
         }
     }
 
-    // Seznam květin:
+    // Seznam květin - vrátí celý seznam květin:
     public List<Plant> getPlants() {
         return plants;
     }
