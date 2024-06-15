@@ -24,4 +24,12 @@ public class ListPlants {
         }
         return plants.get(index);
     }
+
+    // Odebrání květiny ze seznamu na daném indexu:
+    public void removePlant(int index) throws IndexOutOfBoundsException {
+        if (index < 0 || index >= plants.size()) {
+            throw new IndexOutOfBoundsException("Neplatný index: " + index);
+        }
+        plants.remove(index);
+    }
 }
