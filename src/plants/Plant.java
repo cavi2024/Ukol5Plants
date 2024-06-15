@@ -74,13 +74,6 @@ public class Plant {
         return String.format("Květina: %s, Poslední zálivka dne: %s, Zalít za: %d dní", name, dateOfLastWatering, dayFrequencyOfWatering);
     }
 
-    public void watering() throws PlantException {
-        LocalDate today = LocalDate.now();
-        if (!today.isAfter(dateOfLastWatering.plusDays(dayFrequencyOfWatering))) {
-            throw new PlantException("Rostlina ještě nepotřebuje zálivku.");
-        }
-        dateOfLastWatering = today;
-    }
 
     @Override
     public String toString() {
