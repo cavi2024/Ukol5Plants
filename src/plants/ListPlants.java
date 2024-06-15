@@ -15,4 +15,13 @@ public class ListPlants {
     public void addPlant (Plant plant) {
         plants.add(plant);
     }
+
+    // Získání květiny na zadaném indexu (index je mimo platný rozsah, když je menší než 0 a nebo
+    // větší či roven počtu položek v seznamu:
+    public Plant getPlant(int index) throws IndexOutOfBoundsException {
+        if (index < 0 || index >= plants.size()) {
+            throw new IndexOutOfBoundsException("Neplatný index: " + index);
+        }
+        return plants.get(index);
+    }
 }
