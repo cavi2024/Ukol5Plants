@@ -1,8 +1,6 @@
 package plants;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +38,13 @@ public class ListPlants {
     public void exportToFile(String fileName) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(plants);
+        }
+    }
+
+    // Načtení/import květin ze souboru i s výjimkou, pokud soubor nebude nalezen:
+    public void importFromFile(String fileName) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+            plants = (List<Plant>) ois.readObject();
         }
     }
 }
