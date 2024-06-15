@@ -52,6 +52,13 @@ public class ListPlants {
     public List<Plant> getPlants() {
         return plants;
     }
+
+    @Override
+    public String toString() {
+        return "ListPlants{" +
+                "plants=" + plants +
+                '}';
+    }
 }
 
 
