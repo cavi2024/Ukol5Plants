@@ -10,4 +10,9 @@ public class ListPlants {
     public ListPlants() {
         plants = new ArrayList<>();
     }
+
+    // Přidání nové květiny do seznamu:
+    public void addPlant (Plant plant) {
+        plants.add(plant);
+    }
 }
