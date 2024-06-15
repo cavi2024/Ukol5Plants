@@ -5,23 +5,26 @@ import java.time.LocalDate;
 public class Plant {
     private String name;
     private LocalDate dateOfPlanted;
-    private int dayFrenquencyOfWatering;
+    private int dayFrequencyOfWatering;
     private LocalDate dateOfLastWatering;
     private String description;
 
-    public Plant(String name, LocalDate dateOfPlanted, int dayFrenquencyOfWatering, LocalDate dateOfLastWatering, String description) {
+    public Plant(String name, LocalDate dateOfPlanted, int dayFrequencyOfWatering, LocalDate dateOfLastWatering, String description) throws PlantException {
+        PlantException.validateWateringFrequency(dayFrequencyOfWatering);
+        PlantException.validateLastWateringDate(dateOfPlanted, dateOfLastWatering);
+
         this.name = name;
         this.dateOfPlanted = dateOfPlanted;
-        this.dayFrenquencyOfWatering = dayFrenquencyOfWatering;
+        this.dayFrequencyOfWatering = dayFrequencyOfWatering;
         this.dateOfLastWatering = dateOfLastWatering;
         this.description = description;
     }
 
-    public Plant(String name, LocalDate dateOfPlanted, int dayFrenquencyOfWatering) {
-        this(name, dateOfPlanted, dayFrenquencyOfWatering, LocalDate.now(), " ");
+    public Plant(String name, LocalDate dateOfPlanted, int dayFrequencyOfWatering) throws PlantException {
+        this(name, dateOfPlanted, dayFrequencyOfWatering, LocalDate.now(), " ");
     }
 
-    public Plant(String name) {
+    public Plant(String name) throws PlantException {
         this(name, LocalDate.now(), 7, LocalDate.now(), " ");
     }
 
@@ -41,19 +44,21 @@ public class Plant {
         this.dateOfPlanted = dateOfPlanted;
     }
 
-    public int getDayFrenquencyOfWatering() {
-        return dayFrenquencyOfWatering;
+    public int getDayFrequencyOfWatering() {
+        return dayFrequencyOfWatering;
     }
 
-    public void setDayFrenquencyOfWatering(int dayFrenquencyOfWatering) {
-        this.dayFrenquencyOfWatering = dayFrenquencyOfWatering;
+    public void setDayFrequencyOfWatering(int dayFrequencyOfWatering) throws PlantException {
+        PlantException.validateWateringFrequency(dayFrequencyOfWatering);
+        this.dayFrequencyOfWatering = dayFrequencyOfWatering;
     }
 
     public LocalDate getDateOfLastWatering() {
         return dateOfLastWatering;
     }
 
-    public void setDateOfLastWatering(LocalDate dateOfLastWatering) {
+    public void setDateOfLastWatering(LocalDate dateOfLastWatering) throws PlantException {
+        PlantException.validateLastWateringDate(dateOfPlanted, dateOfLastWatering);
         this.dateOfLastWatering = dateOfLastWatering;
     }
 
@@ -66,7 +71,15 @@ public class Plant {
     }
 
     public String getWateringInfo() {
-        return String.format("Květina: %s, Poslední zálivka dne: %s, Zalít za: %d dní", name, dateOfLastWatering, dayFrenquencyOfWatering);
+        return String.format("Květina: %s, Poslední zálivka dne: %s, Zalít za: %d dní", name, dateOfLastWatering, dayFrequencyOfWatering);
+    }
+
+    public void watering() throws PlantException {
+        LocalDate today = LocalDate.now();
+        if (!today.isAfter(dateOfLastWatering.plusDays(dayFrequencyOfWatering))) {
+            throw new PlantException("Rostlina ještě nepotřebuje zálivku.");
+        }
+        dateOfLastWatering = today;
     }
 
     @Override
@@ -74,7 +87,7 @@ public class Plant {
         return "Plant{" +
                 "Název květiny:'" + name + '\'' +
                 ", Poslední zálivka dne:" + dateOfLastWatering +
-                ", Zalít za dní:" + dayFrenquencyOfWatering +
+                ", Zalít za dní:" + dayFrequencyOfWatering +
                 '}';
     }
 }
