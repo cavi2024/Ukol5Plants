@@ -1,5 +1,8 @@
 package plants;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,4 +35,29 @@ public class ListPlants {
         }
         plants.remove(index);
     }
+
+    // Exportování květin do souboru:
+    public void exportToFile(String fileName) throws IOException {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            oos.writeObject(plants);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
