@@ -17,7 +17,7 @@ public class PlantException extends Exception{
     // Metoda, která kontroluje, zda datum poslední zálivky není starší než datum zasazení rostliny:
     public static void validateLastWateringDate(LocalDate dateOfPlanted, LocalDate dateOfLastWatering) throws PlantException {
         if (dateOfLastWatering.isBefore(dateOfPlanted)) {
-            throw new PlantException("Datum poslední zálivky nesmí být starší než datum zasazení rostliny.");
+            throw new PlantException("Datum poslední zálivky nesmí být starší než datum zasazení květiny.");
         }
     }
 }
