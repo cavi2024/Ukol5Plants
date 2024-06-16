@@ -56,7 +56,7 @@ public class ListPlants {
     @Override
     public String toString() {
         return "ListPlants{" +
-                "plants=" + plants +
+                "květiny=" + plants +
                 '}';
     }
 }
