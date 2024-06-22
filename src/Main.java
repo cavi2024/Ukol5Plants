@@ -68,7 +68,7 @@ public class Main {
             newListPlants.printWateringInfo();
 
             // Řazení podle data poslední zálivky a výpis:
-            Collections.sort(newListPlants.getPlants(), Plant.compareByLastWateringDate());
+            newListPlants.getPlants().sort(Plant.compareByLastWateringDate());
             System.out.println("Seřazeno podle data poslední zálivky:");
             newListPlants.printWateringInfo();
 
