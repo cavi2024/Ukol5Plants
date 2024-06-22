@@ -11,7 +11,7 @@ public class Main {
 
         // načtení ze souboru kvetiny.txt:
         try {
-            listPlants.importFromFile("kvetiny.txt", "\t");
+            listPlants.importFromFile("resources/kvetiny.txt", "\t");
         } catch (IOException e) {
             System.err.println("Chyba při načtení souboru: " + e.getMessage());
         } catch (PlantException e) {
