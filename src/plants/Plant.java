@@ -1,6 +1,7 @@
 package plants;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Plant implements Comparable<Plant> {
     private String name;
@@ -96,6 +97,11 @@ public class Plant implements Comparable<Plant> {
     @Override
     public int compareTo(Plant other) {
         return this.name.compareTo(other.name);
+    }
+
+    // Řazení podle data poslední zálivky:
+    public static Comparator<Plant> compareByLastWateringDate() {
+        return Comparator.comparing(Plant::getDateOfLastWatering);
     }
 
 }
