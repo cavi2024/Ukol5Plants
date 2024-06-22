@@ -21,7 +21,8 @@ public class Main {
             listPlants.addPlant(newPlant1);
             listPlants.addPlant(newPlant2);
 
-
+            // Odebrání druhé květiny:
+            listPlants.removePlant(1);
 
         }
     }
