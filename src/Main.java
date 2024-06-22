@@ -9,8 +9,8 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
         ListPlants listPlants = new ListPlants();
-        try {
-            // načtení ze souboru kvetiny.txt:
+
+           // načtení ze souboru kvetiny.txt:
             try {
                 listPlants.importFromFile("resources/kvetiny.txt", "\t");
             } catch (IOException e) {
@@ -71,9 +71,5 @@ public class Main {
             newListPlants.getPlants().sort(Plant.compareByLastWateringDate());
             System.out.println("Seřazeno podle data poslední zálivky:");
             newListPlants.printWateringInfo();
-
-        } catch (IOException | PlantException e) {
-            e.printStackTrace();
         }
-    }
 }
