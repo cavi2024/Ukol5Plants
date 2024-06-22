@@ -58,6 +58,8 @@ public class ListPlants {
     public void importFromFile(String fileName, String delimiter) throws IOException, PlantException  {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
             while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(line);
                 String[] parts = scanner.nextLine().split("\t");
                 String name = parts[0];
                 String description = parts[1].isEmpty() ? " " : parts[1];
