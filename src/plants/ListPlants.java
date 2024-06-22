@@ -68,7 +68,7 @@ public class ListPlants {
                 addPlant(plant);
             }
         } catch (FileNotFoundException e) {
-            throw new PlantException("Soubor " + fileName + "nebyl nalezen: " + e.getMessage());
+            throw new PlantException("Soubor nebyl nalezen: " + e.getMessage());
         }
     }
 
