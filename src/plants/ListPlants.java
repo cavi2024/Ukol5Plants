@@ -60,6 +60,13 @@ public class ListPlants {
         return plants;
     }
 
+    // Metoda pro výpis informací o zálivce:
+    public void printWateringInfo() {
+        for (Plant plant : plants) {
+            System.out.println(plant.getWateringInfo());
+        }
+    }
+
     @Override
     public String toString() {
         return "ListPlants{" +
