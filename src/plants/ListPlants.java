@@ -37,9 +37,19 @@ public class ListPlants {
     }
 
     // Exportování květin do souboru:
-    public void exportToFile(String fileName) throws IOException {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
-            oos.writeObject(plants);
+    public void exportToFile(String fileName, String delimiter) throws IOException, PlantException {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName)))) {
+            for (Plant plant : plants) {
+                writer.println(
+                       plant.getName() + delimiter
+                        + plant.getDescription() + delimiter
+                        + plant.getDateOfPlanted() + delimiter
+                        + plant.getDayFrequencyOfWatering() + delimiter
+                        + plant.getDateOfLastWatering());
+
+            }
+        } catch (IOException ex) {
+            throw  new PlantException("Chyba při zápisu do souboru " + fileName + " " + ex.getMessage());
         }
     }
 
