@@ -49,8 +49,8 @@ public class ListPlants {
                         + plant.getDateOfLastWatering());
 
             }
-        } catch (IOException ex) {
-            throw  new PlantException("Chyba při zápisu do souboru " + fileName + " " + ex.getMessage());
+        } catch (IOException e) {
+            throw  new PlantException("Chyba při zápisu do souboru " + fileName + " " + e.getMessage());
         }
     }
 
