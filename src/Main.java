@@ -4,6 +4,7 @@ import plants.PlantException;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -60,5 +61,10 @@ public class Main {
         } catch (PlantException e) {
             System.err.println(e.getMessage());
         }
+
+        // Řazení podle názvu květiny a výpis:
+        Collections.sort(newListPlants.getPlants());
+        System.out.println("Seřazeno podle názvu:");
+        newListPlants.printWateringInfo();
     }
 }
