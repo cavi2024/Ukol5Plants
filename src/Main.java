@@ -1,5 +1,11 @@
+import plants.ListPlants;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ListPlants listPlants = new ListPlants();
+        try {
+           // načtení ze souboru kvetiny.txt:
+           listPlants.importFromFile("kvetiny.txt");
+        }
     }
 }
