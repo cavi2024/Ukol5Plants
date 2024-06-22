@@ -24,6 +24,9 @@ public class Main {
             // Odebrání druhé květiny:
             listPlants.removePlant(1);
 
+            // Uložení do nového souboru:
+            listPlants.exportToFile("novy_seznam_kvetin.txt");
+
         }
     }
 }
