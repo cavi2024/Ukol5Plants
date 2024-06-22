@@ -6,6 +6,9 @@ public class Main {
         try {
            // načtení ze souboru kvetiny.txt:
            listPlants.importFromFile("kvetiny.txt");
+
+           // Výpis informací o zálivce:
+           listPlants.printWateringInfo();
         }
     }
 }
