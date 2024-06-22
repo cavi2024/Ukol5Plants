@@ -55,7 +55,7 @@ public class Main {
             // Opětovné načtení vygenerovaného souboru:
             ListPlants newListPlants = new ListPlants();
             try {
-                newListPlants.importFromFile("novy_seznam_kvetin.txt", "\t");
+                newListPlants.importFromFile("resources/novy_seznam_kvetin.txt", "\t");
             } catch (IOException e) {
                 System.err.println("Chyba při opětovném načtení souboru: " + e.getMessage());
             } catch (PlantException e) {
