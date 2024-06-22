@@ -9,62 +9,71 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
         ListPlants listPlants = new ListPlants();
-
-        // načtení ze souboru kvetiny.txt:
         try {
-            listPlants.importFromFile("resources/kvetiny.txt", "\t");
-        } catch (IOException e) {
-            System.err.println("Chyba při načtení souboru: " + e.getMessage());
-        } catch (PlantException e) {
-            System.err.println(e.getMessage());
-        }
+            // načtení ze souboru kvetiny.txt:
+            try {
+                listPlants.importFromFile("resources/kvetiny.txt", "\t");
+            } catch (IOException e) {
+                System.err.println("Chyba při načtení souboru: " + e.getMessage());
+            } catch (PlantException e) {
+                System.err.println(e.getMessage());
+            }
 
-        // Výpis informací o zálivce:
-        listPlants.printWateringInfo();
+            // Výpis informací o zálivce:
+            listPlants.printWateringInfo();
 
-        // Přidání dvou květin:
-        Plant newPlant1 = null;
-        try {
-            newPlant1 = new Plant("Bazalka v kuchyni", LocalDate.of(2021, 9, 4),
+            // Přidání dvou květin:
+            Plant newPlant1 = null;
+            try {
+                newPlant1 = new Plant("Bazalka v kuchyni", LocalDate.of(2021, 9, 4),
                     3, LocalDate.of(2021, 9, 4), " ");
-        } catch (PlantException e) {
-            System.err.println("Chyba při vložení nové květiny do souboru: " + e.getMessage());
-        }
-        Plant newPlant2 = null;
-        try {
-            newPlant2 = new Plant("Růže", LocalDate.of(2022, 3, 15),
+            } catch (PlantException e) {
+                System.err.println("Chyba při vložení nové květiny do souboru: " + e.getMessage());
+            }
+            Plant newPlant2 = null;
+            try {
+                newPlant2 = new Plant("Růže", LocalDate.of(2022, 3, 15),
                     5, LocalDate.of(2022, 3, 10), "červená");
-        } catch (PlantException e) {
-            System.err.println("Chyba při vložení nové květiny do souboru: " + e.getMessage());
+            } catch (PlantException e) {
+                System.err.println("Chyba při vložení nové květiny do souboru: " + e.getMessage());
+            }
+            listPlants.addPlant(newPlant1);
+            listPlants.addPlant(newPlant2);
+
+            // Odebrání druhé květiny:
+            listPlants.removePlant(1);
+
+            // Uložení do nového souboru:
+            try {
+                listPlants.exportToFile("novy_seznam_kvetin.txt", "\t");
+            } catch (IOException e) {
+                System.err.println("Chyba při exportu souboru: " + e.getMessage());
+            } catch (PlantException e) {
+                System.err.println(e.getMessage());
+            }
+
+            // Opětovné načtení vygenerovaného souboru:
+            ListPlants newListPlants = new ListPlants();
+            try {
+                newListPlants.importFromFile("novy_seznam_kvetin.txt", "\t");
+            } catch (IOException e) {
+                System.err.println("Chyba při opětovném načtení souboru: " + e.getMessage());
+            } catch (PlantException e) {
+                System.err.println(e.getMessage());
+            }
+
+            // Řazení podle názvu květiny a výpis:
+            Collections.sort(newListPlants.getPlants());
+            System.out.println("Seřazeno podle názvu:");
+            newListPlants.printWateringInfo();
+
+            // Řazení podle data poslední zálivky a výpis:
+            Collections.sort(newListPlants.getPlants(), Plant.compareByLastWateringDate());
+            System.out.println("Seřazeno podle data poslední zálivky:");
+            newListPlants.printWateringInfo();
+
+        } catch (IOException | PlantException e) {
+            e.printStackTrace();
         }
-        listPlants.addPlant(newPlant1);
-        listPlants.addPlant(newPlant2);
-
-        // Odebrání druhé květiny:
-        listPlants.removePlant(1);
-
-        // Uložení do nového souboru:
-        try {
-            listPlants.exportToFile("novy_seznam_kvetin.txt", "\t");
-        } catch (IOException e) {
-            System.err.println("Chyba při exportu souboru: " + e.getMessage());
-        } catch (PlantException e) {
-            System.err.println(e.getMessage());
-        }
-
-        // Opětovné načtení vygenerovaného souboru:
-        ListPlants newListPlants = new ListPlants();
-        try {
-            newListPlants.importFromFile("novy_seznam_kvetin.txt", "\t");
-        } catch (IOException e) {
-            System.err.println("Chyba při opětovném načtení souboru: " + e.getMessage());
-        } catch (PlantException e) {
-            System.err.println(e.getMessage());
-        }
-
-        // Řazení podle názvu květiny a výpis:
-        Collections.sort(newListPlants.getPlants());
-        System.out.println("Seřazeno podle názvu:");
-        newListPlants.printWateringInfo();
     }
 }
