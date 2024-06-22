@@ -73,6 +73,8 @@ public class ListPlants {
             }
         } catch (FileNotFoundException e) {
             throw new PlantException("Soubor nebyl nalezen: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new PlantException("Chybný formát čísla: " + e.getMessage());
         }
     }
 
