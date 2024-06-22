@@ -1,8 +1,10 @@
 package plants;
 
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ListPlants {
     private List<Plant> plants;
@@ -42,9 +44,14 @@ public class ListPlants {
     }
 
     // Načtení/import květin ze souboru i s výjimkou, pokud soubor nebude nalezen:
-    public void importFromFile(String fileName) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-            plants = (List<Plant>) ois.readObject();
+    public void importFromFile(String fileName, String delimiter) throws IOException, PlantException  {
+        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(fileName)))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            throw new PlantException("Soubor " + fileName + "nebyl nalezen: " + e.getMessage());
         }
     }
 
