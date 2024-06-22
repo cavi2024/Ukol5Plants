@@ -59,7 +59,10 @@ public class ListPlants {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 System.out.println(line);
-                String[] parts = scanner.nextLine().split("\t");
+                String[] parts = line.split(delimiter);
+                    if (parts.length != 5) {
+                        throw new PlantException("Chybný formát řádku: " + line);
+                    }
                 String name = parts[0];
                 String description = parts[1].isEmpty() ? " " : parts[1];
                 LocalDate dateOfPlanted = LocalDate.parse(parts[2]);
