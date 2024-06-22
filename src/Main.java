@@ -22,10 +22,20 @@ public class Main {
         listPlants.printWateringInfo();
 
         // Přidání dvou květin:
-        Plant newPlant1 = new Plant("Bazalka v kuchyni", LocalDate.of(2021, 9, 4),
-                3, LocalDate.of(2021, 9, 4), " ");
-        Plant newPlant2 = new Plant("Růže", LocalDate.of(2022, 3, 15),
-                5, LocalDate.of(2022, 3, 10), "červená");
+        Plant newPlant1 = null;
+        try {
+            newPlant1 = new Plant("Bazalka v kuchyni", LocalDate.of(2021, 9, 4),
+                    3, LocalDate.of(2021, 9, 4), " ");
+        } catch (PlantException e) {
+            System.err.println("Chyba při vložení nové květiny do souboru: " + e.getMessage());
+        }
+        Plant newPlant2 = null;
+        try {
+            newPlant2 = new Plant("Růže", LocalDate.of(2022, 3, 15),
+                    5, LocalDate.of(2022, 3, 10), "červená");
+        } catch (PlantException e) {
+            System.err.println("Chyba při vložení nové květiny do souboru: " + e.getMessage());
+        }
         listPlants.addPlant(newPlant1);
         listPlants.addPlant(newPlant2);
 
