@@ -29,6 +29,10 @@ public class Plant implements Comparable<Plant> {
         this(name, LocalDate.now(), 7, LocalDate.now(), " ");
     }
 
+    public Plant(String name, String description, int dayFrequencyOfWatering, LocalDate dateOfLastWatering, LocalDate dateOfPlanted) {
+
+    }
+
     public String getName() {
         return name;
     }
