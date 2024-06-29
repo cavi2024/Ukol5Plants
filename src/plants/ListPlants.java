@@ -43,9 +43,9 @@ public class ListPlants {
                 writer.println(
                        plant.getName() + delimiter
                         + plant.getDescription() + delimiter
-                        + plant.getDateOfPlanted() + delimiter
                         + plant.getDayFrequencyOfWatering() + delimiter
-                        + plant.getDateOfLastWatering());
+                        + plant.getDateOfLastWatering()
+                        + plant.getDateOfPlanted() + delimiter);
 
             }
         } catch (IOException e) {
