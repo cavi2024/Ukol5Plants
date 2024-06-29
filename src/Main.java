@@ -56,6 +56,7 @@ public class Main {
             } catch (PlantException e) {
                 System.err.println(e.getMessage());
             }
+            System.out.println();
 
             // Opětovné načtení vygenerovaného souboru:
             ListPlants newListPlants = new ListPlants();
@@ -66,11 +67,13 @@ public class Main {
             } catch (PlantException e) {
                 System.err.println(e.getMessage());
             }
+            System.out.println();
 
             // Řazení podle názvu květiny a výpis:
             Collections.sort(newListPlants.getPlants());
             System.out.println("Seřazeno podle názvu:");
             newListPlants.printWateringInfo();
+            System.out.println();
 
             // Řazení podle data poslední zálivky a výpis:
             newListPlants.getPlants().sort(Plant.compareByLastWateringDate());
