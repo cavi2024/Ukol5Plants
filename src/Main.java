@@ -46,6 +46,7 @@ public class Main {
 
             // Odebrání druhé květiny:
             listPlants.removePlant(1);
+            System.out.println();
 
             // Uložení do nového souboru:
             try {
