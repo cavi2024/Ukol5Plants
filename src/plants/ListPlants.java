@@ -65,10 +65,10 @@ public class ListPlants {
                     }
                 String name = parts[0];
                 String description = parts[1].isEmpty() ? " " : parts[1];
-                LocalDate dateOfPlanted = LocalDate.parse(parts[2]);
-                int dayFrequencyOfWatering = Integer.parseInt(parts[3]);
-                LocalDate dateOfLastWatering = LocalDate.parse(parts[4]);
-                Plant plant = new Plant(name, dateOfPlanted, dayFrequencyOfWatering, dateOfLastWatering, description);
+                int dayFrequencyOfWatering = Integer.parseInt(parts[2]);
+                LocalDate dateOfLastWatering = LocalDate.parse(parts[3]);
+                LocalDate dateOfPlanted = LocalDate.parse(parts[4]);
+                Plant plant = new Plant(name, description, dayFrequencyOfWatering, dateOfLastWatering, dateOfPlanted);
                 addPlant(plant);
             }
         } catch (FileNotFoundException e) {
