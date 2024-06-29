@@ -47,7 +47,7 @@ public class Main {
 
             // Uložení do nového souboru:
             try {
-                listPlants.exportToFile("", "\t");
+                listPlants.exportToFile("resources/novy_seznam_kvetin.txt", "\t");
             } catch (IOException e) {
                 System.err.println("Chyba při exportu souboru: " + e.getMessage());
             } catch (PlantException e) {
