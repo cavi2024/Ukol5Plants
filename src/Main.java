@@ -21,6 +21,7 @@ public class Main {
 
             // Výpis informací o zálivce:
             listPlants.printWateringInfo();
+            System.out.println();
 
             // Přidání dvou květin:
             Plant newPlant1 = null;
