@@ -33,7 +33,7 @@ public class Main {
             Plant newPlant2 = null;
             try {
                 newPlant2 = new Plant("Růže", LocalDate.of(2022, 3, 15),
-                    5, LocalDate.of(2022, 3, 10), "červená");
+                    5, LocalDate.of(2022, 3, 15), "červená");
             } catch (PlantException e) {
                 System.err.println("Chyba při vložení nové květiny do souboru: " + e.getMessage());
             }
