@@ -5,32 +5,31 @@ import java.util.Comparator;
 
 public class Plant implements Comparable<Plant> {
     private String name;
-    private LocalDate dateOfPlanted;
+    private String description;
     private int dayFrequencyOfWatering;
     private LocalDate dateOfLastWatering;
-    private String description;
+    private LocalDate dateOfPlanted;
 
-    public Plant(String name, LocalDate dateOfPlanted, int dayFrequencyOfWatering, LocalDate dateOfLastWatering, String description) throws PlantException {
+
+
+    public Plant(String name, String description, int dayFrequencyOfWatering, LocalDate dateOfLastWatering, LocalDate dateOfPlanted) throws PlantException {
         PlantException.validateWateringFrequency(dayFrequencyOfWatering);
         PlantException.validateLastWateringDate(dateOfPlanted, dateOfLastWatering);
 
         this.name = name;
-        this.dateOfPlanted = dateOfPlanted;
+        this.description = description;
         this.dayFrequencyOfWatering = dayFrequencyOfWatering;
         this.dateOfLastWatering = dateOfLastWatering;
-        this.description = description;
+        this.dateOfPlanted = dateOfPlanted;
     }
 
-    public Plant(String name, LocalDate dateOfPlanted, int dayFrequencyOfWatering) throws PlantException {
-        this(name, dateOfPlanted, dayFrequencyOfWatering, LocalDate.now(), " ");
+
+    public Plant(String name, int dayFrequencyOfWatering, LocalDate dateOfPlanted) throws PlantException {
+        this(name, " ", dayFrequencyOfWatering, LocalDate.now(), dateOfPlanted);
     }
 
     public Plant(String name) throws PlantException {
-        this(name, LocalDate.now(), 7, LocalDate.now(), " ");
-    }
-
-    public Plant(String name, String description, int dayFrequencyOfWatering, LocalDate dateOfLastWatering, LocalDate dateOfPlanted) {
-
+        this(name, " ", 7, LocalDate.now(), LocalDate.now());
     }
 
     public String getName() {
